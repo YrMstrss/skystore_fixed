@@ -18,7 +18,7 @@ def index_contact(request):
 def index_product(request, pk):
     product = Product.objects.get(pk=pk)
     context = {
-        'object': Product.objects.get(pk=pk),
+        'object': product,
         'title': f'Товар - {product.name}'
     }
     return render(request, "catalog/product_page.html", context)
