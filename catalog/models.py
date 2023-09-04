@@ -14,3 +14,20 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание')
+    preview = models.ImageField(upload_to='images/', verbose_name='Превью', **NULLABLE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категории')
+    unit_price = models.IntegerField(verbose_name='Стоимость')
+    creation_date = models.DateTimeField(verbose_name='Дата создания')
+    last_change_date = models.DateTimeField(verbose_name='Дата последнего изменения')
+
+    def __str__(self):
+        return f'{self.name} - {self.unit_price}'
+
+    class Meta():
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
