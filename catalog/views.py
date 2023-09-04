@@ -13,3 +13,12 @@ def index_home(request):
 
 def index_contact(request):
     return render(request, "catalog/contact_page.html")
+
+
+def index_product(request, pk):
+    product = Product.objects.get(pk=pk)
+    context = {
+        'object': Product.objects.get(pk=pk),
+        'title': f'Товар - {product.name}'
+    }
+    return render(request, "catalog/product_page.html", context)
