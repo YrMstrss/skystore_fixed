@@ -26,8 +26,8 @@ class Product(models.Model):
     last_change_date = models.DateTimeField(verbose_name='Дата последнего изменения')
 
     def __str__(self):
-        return f'{self.name} - {self.unit_price}'
+        return f'{self.name}'
 
-    class Meta():
+    class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
