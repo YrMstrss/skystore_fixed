@@ -1,14 +1,19 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
 from catalog.models import Product
 
 
-def index_home(request):
-    product = Product.objects.all()
-    context = {
-        'object_list': product
-    }
-    return render(request, "catalog/home_page.html", context)
+# def index_home(request):
+#     product = Product.objects.all()
+#     context = {
+#         'object_list': product
+#     }
+#     return render(request, "catalog/product_list.html", context)
+
+
+class ProductListView(ListView):
+    model = Product
 
 
 def index_contact(request):
