@@ -1,6 +1,7 @@
 {% extends 'catalog/base.html' %}
 
 {% block content %}
+    <a type="button" href="{% url 'blog:create' %}" class="btn btn-outline-primary">Создать новую запись</a>
     <div class="row text-center">
         {% for object in object_list %}
             <a class="btn btn-primary" href="#" role="button">{{ object }}</a>
