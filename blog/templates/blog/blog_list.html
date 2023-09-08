@@ -1,0 +1,9 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+    <div class="row text-center">
+        {% for object in object_list %}
+            <a class="btn btn-primary" href="#" role="button">{{ object }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}
