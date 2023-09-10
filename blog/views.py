@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 from pytils.translit import slugify
 
 from blog.models import Blog
@@ -22,3 +22,8 @@ class BlogCreateView(CreateView):
 
 class BlogListView(ListView):
     model = Blog
+
+
+class BlogDetailView(DetailView):
+    model = Blog
+
