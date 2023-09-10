@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from pytils.translit import slugify
 
 from blog.models import Blog
@@ -40,3 +40,8 @@ class BlogUpdateView(UpdateView):
             new_blog.save()
 
         return super().form_valid(form)
+
+
+class BlogDeleteView(DeleteView):
+    model = Blog
+    success_url = reverse_lazy('blog:list')
