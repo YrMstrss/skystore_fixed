@@ -6,7 +6,7 @@
         <ul class="list-group">
             {% for object in object_list %}
                 {% if object.is_published %}
-                    <li class="list-group-item">{{ object }}</li>
+                    <li class="list-group-item">{{ object }} Просмотры: {{ object.views_counter }}</li>
                     <div class="btn-group" role="group">
                         <a href="{% url 'blog:detail_blog' object.slug %}" class="btn btn-outline-secondary">Посмотреть</a>
                         <a href="{% url 'blog:edit_blog' object.slug %}" class="btn btn-outline-secondary">Редактировать</a>
