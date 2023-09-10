@@ -7,7 +7,7 @@
             {% for object in object_list %}
                 <li class="list-group-item">{{ object }}</li>
                 <div class="btn-group" role="group">
-                    <a href="#" class="btn btn-outline-secondary">Посмотреть</a>
+                    <a href="{% url 'blog:detail_blog' object.slug %}" class="btn btn-outline-secondary">Посмотреть</a>
                     <a href="#" class="btn btn-outline-secondary">Редактировать</a>
                     <a href="#" class="btn btn-outline-danger">Удалить</a>
                 </div>
