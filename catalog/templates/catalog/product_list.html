@@ -19,9 +19,13 @@
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">{{ object.unit_price }} ₽</h1>
                         <p class="text-center">{{ object.description | truncatechars:100 }}</p>
-                        <a class="p-2 btn btn-outline-primary"
-                           href="{% url 'catalog:product_detail' object.pk %}">Посмотреть</a>
-                        <a class="p-2 btn btn-outline-primary" href="#">Купить</a>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-outline-primary btn-sm"
+                               href="{% url 'catalog:product_detail' object.pk %}">View</a>
+                            <a class="btn btn-outline-primary btn-sm"
+                               href="{% url 'catalog:product_edit' object.pk %}">Edit</a>
+                            <a class="btn btn-outline-primary btn-sm" href="#">Buy</a>
+                        </div>
                     </div>
                 </div>
             </div>
