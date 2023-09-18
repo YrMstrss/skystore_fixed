@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 
@@ -22,8 +24,8 @@ class Product(models.Model):
     preview = models.ImageField(upload_to='images/', verbose_name='Превью', **NULLABLE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категории')
     unit_price = models.IntegerField(verbose_name='Стоимость')
-    creation_date = models.DateTimeField(verbose_name='Дата создания')
-    last_change_date = models.DateTimeField(verbose_name='Дата последнего изменения')
+    creation_date = models.DateTimeField(default=datetime.now(), verbose_name='Дата создания')
+    last_change_date = models.DateTimeField(default=datetime.now(), verbose_name='Дата последнего изменения')
 
     def __str__(self):
         return f'{self.name}'
