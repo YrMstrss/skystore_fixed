@@ -2,6 +2,13 @@
 
 
 {% block content %}
+
+    <div class="row mb-3">
+        <a href="{% url 'catalog:product_create' %}" type="button" class="btn btn-outline-primary">Создать новый
+            продукт</a>
+    </div>
+
+
     <div class="row text-center">
         {% for object in object_list %}
             <div class="col-3">
@@ -12,7 +19,8 @@
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">{{ object.unit_price }} ₽</h1>
                         <p class="text-center">{{ object.description | truncatechars:100 }}</p>
-                        <a class="p-2 btn btn-outline-primary" href="{% url 'product' object.pk %}">Посмотреть</a>
+                        <a class="p-2 btn btn-outline-primary"
+                           href="{% url 'catalog:product_detail' object.pk %}">Посмотреть</a>
                         <a class="p-2 btn btn-outline-primary" href="#">Купить</a>
                     </div>
                 </div>
