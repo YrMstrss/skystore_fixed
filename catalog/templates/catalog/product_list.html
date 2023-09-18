@@ -25,6 +25,8 @@
                             <a class="btn btn-outline-primary btn-sm"
                                href="{% url 'catalog:product_edit' object.pk %}">Edit</a>
                             <a class="btn btn-outline-primary btn-sm" href="#">Buy</a>
+                            <a class="btn btn-outline-danger btn-sm"
+                               href="{% url 'catalog:product_delete' object.pk %}">Delete</a>
                         </div>
                     </div>
                 </div>
