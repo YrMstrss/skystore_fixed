@@ -41,3 +41,10 @@ class Version(models.Model):
     version_number = models.IntegerField(default=1, verbose_name='номер версии')
     version_name = models.CharField(max_length=150, verbose_name='название версии')
     is_active = models.BooleanField(default=True, verbose_name='активная версия')
+
+    def __str__(self):
+        return f'{self.product} (ver. {self.version_number})'
+
+    class Meta:
+        verbose_name = 'версия'
+        verbose_name_plural = 'версии'
