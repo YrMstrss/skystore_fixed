@@ -13,6 +13,9 @@
                         <div class="form-floating">
                             {% csrf_token %}
                             {{ form.as_p }}
+                            <p class="text-muted">
+                                Не зарегистрированы? <a href="{% url 'users:register' %}">Зарегистрироваться</a>
+                            </p>
                             <button type="submit" class="btn btn-success">Войти</button>
                         </div>
                     </div>
