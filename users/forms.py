@@ -10,7 +10,7 @@ class UserRegisterForm(UserCreationForm):
         fields = ('email', 'password1', 'password2')
 
 
-class UserProfileCageForm(UserChangeForm):
+class UserProfileChangeForm(UserChangeForm):
 
     class Meta:
         model = User
