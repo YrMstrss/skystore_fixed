@@ -2,7 +2,7 @@ import secrets
 
 from django.core.mail import send_mail
 from django.shortcuts import redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import CreateView, UpdateView, TemplateView
 
@@ -72,3 +72,17 @@ class ProfileView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+
+def generate_new_password(request):
+    """Сброс пароля зарегистрированного пользователя в профиле"""
+    new_password = secrets.token_hex(nbytes=8)
+    send_mail(
+        subject='Вы сменили пароль',
+        message=f'Ваш новый пароль: {new_password}',
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[request.user.email]
+    )
+    request.user.set_password(new_password)
+    request.user.save()
+    return redirect(reverse('catalog:home'))
