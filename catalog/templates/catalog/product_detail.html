@@ -14,6 +14,7 @@
                 <h6 class="card-subtitle mb-2 text-body-secondary">{{ object.category }}</h6>
                 <h4 class="card-subtitle mb-2 text-body-secondary">{{ object.unit_price }} ₽</h4>
                 <p class="card-text">{{ object.description }}</p>
+                <p class="card-text">Создан пользователем: {{ object.creator | default:'неизветно' }}</p>
                 <p class="card-text-shadow">{{ object.creation_date }}</p>
                 <p class="card-text-shadow">{{ object.last_change_date }}</p>
             </div>
