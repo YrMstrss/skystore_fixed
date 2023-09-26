@@ -3,10 +3,12 @@
 
 {% block content %}
 
-    <div class="row mb-3">
-        <a href="{% url 'catalog:product_create' %}" type="button" class="btn btn-outline-primary">Создать новый
-            продукт</a>
-    </div>
+    {% if user.is_authenticated %}
+        <div class="row mb-3">
+            <a href="{% url 'catalog:product_create' %}" type="button" class="btn btn-outline-primary">Создать новый
+                продукт</a>
+        </div>
+    {% endif %}
 
 
     <div class="row text-center">
@@ -22,11 +24,13 @@
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a class="btn btn-outline-primary btn-sm"
                                href="{% url 'catalog:product_detail' object.pk %}">View</a>
-                            <a class="btn btn-outline-primary btn-sm"
-                               href="{% url 'catalog:product_edit' object.pk %}">Edit</a>
                             <a class="btn btn-outline-primary btn-sm" href="#">Buy</a>
-                            <a class="btn btn-outline-danger btn-sm"
-                               href="{% url 'catalog:product_delete' object.pk %}">Delete</a>
+                            {% if object.creator %}
+                                    <a class="btn btn-outline-primary btn-sm"
+                                       href="{% url 'catalog:product_edit' object.pk %}">Edit</a>
+                                <a class="btn btn-outline-danger btn-sm"
+                                   href="{% url 'catalog:product_delete' object.pk %}">Delete</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
