@@ -2,7 +2,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
 from users.apps import UsersConfig
-from users.views import RegisterView, ProfileView, EmailConfirmationSentView, EmailConfirmView, UserConfirmEmailView
+from users.views import RegisterView, ProfileView, EmailConfirmationSentView, EmailConfirmView, UserConfirmEmailView, \
+    generate_new_password
 
 app_name = UsersConfig.name
 
@@ -14,4 +15,7 @@ urlpatterns = [
     path('email-sent/', EmailConfirmationSentView.as_view(), name='email_sent'),
     path('confirm-email/<str:token>/', UserConfirmEmailView.as_view(), name='email_verified'),
     path('email_verified/', EmailConfirmView.as_view(), name='email_verified'),
+
+    path('profile/genpassword/', generate_new_password, name='generate_new_password'),
+
 ]
