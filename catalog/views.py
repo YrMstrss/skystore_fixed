@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Version, Category
+from catalog.services import get_categories
 
 
 def index_contact(request):
@@ -64,3 +65,10 @@ class ProductDeleteView(DeleteView):
 
 class CategoryListView(ListView):
     model = Category
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        categories = get_categories()
+        context_data['categories'] = categories
+
+        return context_data
